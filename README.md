@@ -1,5 +1,6 @@
 # ovcina-rapidriver
 =======
+RabbitMQ is required to be running: https://www.rabbitmq.com/download.html
 
 1. Download this repository and save somewhere.
 2. Create a sperate workspace for the service.
@@ -43,4 +44,10 @@ channel.publish(subscribe.rapid, "error", Buffer.from('info message sent'));
 ```
 
 ## Testing the service
->>>>>>> d80bcd74956669e9203761e331361abd627fe8aa
+Run RabbitMQ message broker:
+```bash
+rabbitmq-server
+```
+
+The file "producer.js" is for sending a message to the rapid which the service can subscribe to
+
