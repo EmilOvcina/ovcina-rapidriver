@@ -18,7 +18,7 @@ An example can be found in service-example.js
 
 First import the node module: 
 ```javascript
-var subscribe = require("@ovcina");
+var subscribe = require("@ovcina/rapidriver");
 ```
 
 Define a constant called 'host':
