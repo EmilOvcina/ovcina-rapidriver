@@ -1,5 +1,4 @@
 # ovcina-rapidriver
-<<<<<<< HEAD
 =======
 
 1. Download this repository and save somewhere.
