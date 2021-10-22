@@ -21,12 +21,12 @@ amqp.connect('amqp://localhost', function(error0, connection) {
         })
 
         //Sends the message to the queue
-        channel.publish(exchange, key, Buffer.from(msg + ":" + i), {
+        channel.publish(exchange, key, Buffer.from(msg), {
             durable: true,
             persistent: true
         });
 
-        console.log(" [x] Sent '%s'", key, msg + ":" + i);
+        console.log(" [x] Sent '%s'", key, msg);
         
         });
         setTimeout(function() {
