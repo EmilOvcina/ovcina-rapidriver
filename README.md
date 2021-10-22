@@ -8,11 +8,6 @@
 
 ## Installation
 
-Install RabbitMQ Node module:
-```bash
-npm install amqplib
-```
-
 Install rapidriver Node module:
 ```bash
 npm install path/to/ovcina-rapidriver
