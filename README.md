@@ -50,12 +50,12 @@ node service.js
 ```
 
 The file "producer.js" is for sending a message to the rapid which the service can subscribe to.
-It's only used for testing the service. In a new terminal window:
+It's only used for testing the service:
 ```bash
 node path/to/producer.js <event_name> <message>
 ```
 
-To test the service-example.js:
+To test the running service-example.js, run the producer and make a display event (in a new terminal window):
 ```bash
 node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 ```
