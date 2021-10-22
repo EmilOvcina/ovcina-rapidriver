@@ -60,7 +60,7 @@ It's only used for testing the service:
 node path/to/producer.js <event_name> <message>
 ```
 
-To test the service.js example
+To test the service-example.js
 ```bash
 node path/to/producer.js "display" "hello world"
 ```
