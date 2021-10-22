@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/EmilOvcina/ovcina-rapidriver/issues"
   },
-  "homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme"
+  "homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme",
+  "dependencies": {
+    "amqplib": "latest"
+  }
 }
