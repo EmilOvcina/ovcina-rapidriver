@@ -23,7 +23,7 @@ An example can be found in service-example.js
 
 First import the node module: 
 ```javascript
-var subscribe = require("./subscribe");
+var subscribe = require("@ovcina");
 ```
 
 Define a constant called 'host':
