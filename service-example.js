@@ -1,4 +1,4 @@
-var subscribe = require("./subscribe");
+var subscribe = require("@ovcina/rapidriver");
 
 const host = 'amqp://localhost';
 
