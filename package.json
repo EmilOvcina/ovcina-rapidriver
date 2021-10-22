@@ -1,0 +1,11 @@
+{
+  "name": "ovcina_rapidriver",
+  "version": "1.0.0",
+  "description": "A Rapid-River architecture using RabbitMQ",
+  "main": "subscribe.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emil Ovcina",
+  "license": "ISC"
+}
