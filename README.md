@@ -1,6 +1,6 @@
 # ovcina-rapidriver
-=======
-RabbitMQ is required to be running: https://www.rabbitmq.com/download.html
+
+*RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
 1. Download this repository and save somewhere.
 2. Create a sperate workspace for the service.
@@ -15,7 +15,7 @@ npm install amqplib
 
 Install rapidriver Node module:
 ```bash
-npm install path/to/module/ovcina-rapidriver
+npm install path/to/ovcina-rapidriver
 ```
 
 ## Creating the service
@@ -49,5 +49,20 @@ Run RabbitMQ message broker:
 rabbitmq-server
 ```
 
-The file "producer.js" is for sending a message to the rapid which the service can subscribe to
+Run the service:
+```bash
+node service.js
+```
+
+The file "producer.js" is for sending a message to the rapid which the service can subscribe to.
+It's only used for testing the service:
+```bash
+node path/to/producer.js <event_name> <message>
+```
+
+To test the service.js example
+```bash
+node path/to/producer.js "display" "hello world"
+```
+
 
