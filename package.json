@@ -1,5 +1,5 @@
 {
-  "name": "ovcina_rapidriver",
+  "name": "@ovcina/rapidriver",
   "version": "1.0.0",
   "description": "A Rapid-River architecture using RabbitMQ",
   "main": "subscribe.js",
@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Emil Ovcina",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmilOvcina/ovcina-rapidriver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EmilOvcina/ovcina-rapidriver/issues"
+  },
+  "homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme"
 }
