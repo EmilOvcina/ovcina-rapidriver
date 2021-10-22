@@ -20,16 +20,14 @@ amqp.connect('amqp://localhost', function(error0, connection) {
             durable: false
         })
 
-        for(var i = 0; i < 5; i++) {
-            //Sends the message to the queue
-            channel.publish(exchange, key, Buffer.from(msg + ":" + i), {
-                durable: true,
-                persistent: true
-            });
+        //Sends the message to the queue
+        channel.publish(exchange, key, Buffer.from(msg + ":" + i), {
+            durable: true,
+            persistent: true
+        });
 
-            console.log(" [x] Sent '%s'", key, msg + ":" + i);
-        }
-
+        console.log(" [x] Sent '%s'", key, msg + ":" + i);
+        
         });
         setTimeout(function() {
             connection.close();
