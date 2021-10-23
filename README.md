@@ -2,7 +2,7 @@
 
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
-1. Download this repository and save somewhere.
+1. Download this repository (as a ZIP) and save somewhere.
 2. Create a separate workspace(folder) for the service.
 3. Go to the workspace(folder) and open terminal.
 
