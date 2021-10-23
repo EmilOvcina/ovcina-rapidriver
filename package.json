@@ -18,5 +18,9 @@
   "homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme",
   "dependencies": {
     "amqplib": "latest"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
