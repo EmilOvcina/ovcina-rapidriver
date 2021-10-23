@@ -20,5 +20,5 @@ subscribe.subscribe(host, "display", (msg, channel) => {
 //     console.log(" [x] Received: %s", msg.content.toString());
 
 //     //Send an event back into the rapid 
-//     channel.publish(subscribe.rapid, "error", Buffer.from('info message sent'));
+//     channel.publish(subscribe.rapid, "error", Buffer.from('error message'));
 // });
