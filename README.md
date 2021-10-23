@@ -35,7 +35,7 @@ subscribe.subscribe(host, "display", (msg, channel) => {
 
 Send an event back to the rapid. This is done inside the subscribe function:
 ```javascript
-channel.publish(subscribe.rapid, "error", Buffer.from('info message sent'));
+channel.publish(subscribe.rapid, "error", Buffer.from('error message'));
 ```
 
 ## Testing the service
