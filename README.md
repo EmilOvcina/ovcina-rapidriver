@@ -49,7 +49,7 @@ Run the service:
 node service.js
 ```
 
-If the dependencies was not correctly installed you might get an error here. Simply run these commands:
+If the dependencies were not correctly installed you might get an error here. Simply run these commands:
 ```bash
 cd path/to/ovcina-rapidriver
 npm install amqplib
@@ -67,5 +67,16 @@ To test the running service-example.js, run the producer and make a display even
 ```bash
 node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 ```
+
+## Further Testing
+Try making a new service (in a different folder), and make it subscribe to the "error" river.
+```javascript
+subscribe.subscribe(host, "error", (msg, channel) => {
+    console.log(" [x] Received: %s", msg.content.toString());
+});
+```
+
+In the first service add the "channel.publish" line which sends an error event back into the river.
+Now when both services are run, make the producer send a display event, the first service will send an error event which the other service will subscribe to and print out.
 
 
