@@ -3,8 +3,8 @@
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
 1. Download this repository and save somewhere.
-2. Create a separate workspace for the service.
-3. Go to the workspace and open terminal.
+2. Create a separate workspace(folder) for the service.
+3. Go to the workspace(folder) and open terminal.
 
 ## Installation
 
@@ -49,13 +49,21 @@ Run the service:
 node service.js
 ```
 
+If the dependencies was not correctly installed you might get an error here. Simply run these commands:
+```bash
+cd path/to/ovcina-rapidriver
+npm install amqplib
+```
+Now continue:
+
 The file "producer.js" is for sending a message to the rapid which the service can subscribe to.
 It's only used for testing the service:
 ```bash
 node path/to/producer.js <event_name> <message>
 ```
 
-To test the running service-example.js, run the producer and make a display event (in a new terminal window):
+Open a new terminal window.
+To test the running service-example.js, run the producer and make a display event:
 ```bash
 node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 ```
