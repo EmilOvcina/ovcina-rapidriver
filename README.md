@@ -2,9 +2,9 @@
 
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
+## Installation
 Create a folder for the microservice. Open a terminal window and navigate to the empty folder.
 
-## Installation
 Install rapidriver Node module:
 ```bash
 npm install @ovcina/rapidriver
