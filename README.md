@@ -2,15 +2,12 @@
 
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
-1. Download this repository (as a ZIP) and save somewhere.
-2. Create a separate workspace(folder) for the service.
-3. Go to the workspace(folder) and open terminal.
+Create a folder for the microservice. Open a terminal window and navigate to the empty folder.
 
 ## Installation
-
 Install rapidriver Node module:
 ```bash
-npm install path/to/ovcina-rapidriver
+npm install @ovcina/rapidriver
 ```
 
 ## Creating the service
@@ -48,13 +45,6 @@ Run the service:
 ```bash
 node service.js
 ```
-
-If the dependencies were not correctly installed you might get an error here. Simply run these commands:
-```bash
-cd path/to/ovcina-rapidriver
-npm install amqplib
-```
-Now continue:
 
 The file "producer.js" is for sending a message to the rapid which the service can subscribe to.
 It's only used for testing the service:
