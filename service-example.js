@@ -17,9 +17,9 @@ const host = 'amqp://localhost';
 /** 
  *  More subscriptions can be added by calling the subscribe function again:
  */
-rapidriver.subscribe(host, "info", (msg, publish) => {
-    console.log(" [x] Received: %s", msg);
+// rapidriver.subscribe(host, "info", (msg, publish) => {
+//     console.log(" [x] Received: %s", msg);
 
-    //Send an "error" event back into the rapid.
-     publish("error", "error message");
-});
+//     //Send an "error" event back into the rapid.
+//      publish("error", "error message");
+// });
