@@ -26,7 +26,7 @@ const host = 'amqp://localhost';
 Subscribe to a river: 
 ```javascript
 rapidriver.subscribe(host, "display", (msg) => {
-     console.log(" [x] Received: %s", msg.content.toString());
+     console.log(" [x] Received: %s", msg);
 });
 ```
 
@@ -64,7 +64,7 @@ node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 Try making a new service (in a different folder), and make it subscribe to the "error" river.
 ```javascript
 rapidriver.subscribe(host, "error", (msg, channel) => {
-    console.log(" [x] Received: %s", msg.content.toString());
+    console.log(" [x] Received: %s", msg);
 });
 ```
 

@@ -10,16 +10,16 @@ const host = 'amqp://localhost';
  * subscribe to river(s), and do some work if it gets an event.
  */
  rapidriver.subscribe(host, "display", (msg) => {
-    console.log(" [x] Received: %s", msg.content.toString());
+    console.log(" [x] Received: %s", msg);
     
 });
 
 /** 
  *  More subscriptions can be added by calling the subscribe function again:
  */
-// rapidriver.subscribe(host, "info", (msg, channel) => {
-//     console.log(" [x] Received: %s", msg.content.toString());
+rapidriver.subscribe(host, "info", (msg, publish) => {
+    console.log(" [x] Received: %s", msg);
 
-//     //Send an "error" event back into the rapid.
-//      publish("error", "error message");
-// });
+    //Send an "error" event back into the rapid.
+     publish("error", "error message");
+});
