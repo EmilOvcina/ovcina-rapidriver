@@ -25,14 +25,16 @@ const host = 'amqp://localhost';
 
 Subscribe to a river: 
 ```javascript
-rapidriver.subscribe(host, "display", (msg, channel) => {
-    console.log(" [x] Received: %s", msg.content.toString());
+rapidriver.subscribe(host, "display", (msg) => {
+     console.log(" [x] Received: %s", msg.content.toString());
 });
 ```
 
-Send an event back to the rapid. This is done inside the subscribe function:
+Send an event back to the rapid, and remember to add the "publish" parameter in the callback function:
 ```javascript
-rapidriver.publish(channel, "error", "Error message");
+rapidriver.subscribe(host, "display", (msg, publish) => {
+     publish("error", "Error message");
+ });
 ```
 
 ## Testing the service

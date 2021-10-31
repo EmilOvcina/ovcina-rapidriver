@@ -27,9 +27,11 @@ var sub = {
                     }
                     channel.bindQueue(q.queue, rapid, river);
 
+                    const publishWrapper = (river, message) => channel.publish(rapid, river, Buffer.from(message));
+
                     channel.consume(q.queue, function(msg) {
                         if(msg.content) {
-                            _work(msg, channel);
+                            _work(msg, publishWrapper);
                             channel.ack(msg);                
                         }
                     }, {
@@ -38,9 +40,6 @@ var sub = {
                 })
             });
         });       
-    },
-    publish:function (channel, river, message) {
-        channel.publish(rapid, river, Buffer.from(message));
     }
 };
 
