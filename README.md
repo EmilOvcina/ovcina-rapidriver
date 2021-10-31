@@ -15,7 +15,7 @@ An example can be found in service-example.js
 
 First import the node module: 
 ```javascript
-var subscribe = require("@ovcina/rapidriver");
+var rapidriver = require("@ovcina/rapidriver");
 ```
 
 Define a constant called 'host':
@@ -25,14 +25,14 @@ const host = 'amqp://localhost';
 
 Subscribe to a river: 
 ```javascript
-subscribe.subscribe(host, "display", (msg, channel) => {
+rapidriver.subscribe(host, "display", (msg, channel) => {
     console.log(" [x] Received: %s", msg.content.toString());
 });
 ```
 
 Send an event back to the rapid. This is done inside the subscribe function:
 ```javascript
-channel.publish(subscribe.rapid, "error", Buffer.from('error message'));
+rapidriver.publish(channel, "error", "Error message");
 ```
 
 ## Testing the service
@@ -61,7 +61,7 @@ node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 ## Further Testing
 Try making a new service (in a different folder), and make it subscribe to the "error" river.
 ```javascript
-subscribe.subscribe(host, "error", (msg, channel) => {
+rapidriver.subscribe(host, "error", (msg, channel) => {
     console.log(" [x] Received: %s", msg.content.toString());
 });
 ```

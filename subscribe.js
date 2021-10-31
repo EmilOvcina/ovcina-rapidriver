@@ -39,7 +39,9 @@ var sub = {
             });
         });       
     },
-    String:rapid = "rapid"
+    publish:function (channel, river, message) {
+        channel.publish(rapid, river, Buffer.from(message));
+    }
 };
 
 module.exports = sub;

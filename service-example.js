@@ -1,4 +1,4 @@
-var subscribe = require("@ovcina/rapidriver");
+var rapidriver = require("@ovcina/rapidriver");
 
 const host = 'amqp://localhost';
 
@@ -9,16 +9,16 @@ const host = 'amqp://localhost';
 /** 
  * subscribe to river(s), and do some work if it gets an event.
  */
-subscribe.subscribe(host, "display", (msg, channel) => {
+ rapidriver.subscribe(host, "display", (msg, channel) => {
     console.log(" [x] Received: %s", msg.content.toString());
 });
 
 /** 
  *  More subscriptions can be added by calling the subscribe function again:
  */
-// subscribe.subscribe(host, "info", (msg, channel) => {
+// rapidriver.subscribe(host, "info", (msg, channel) => {
 //     console.log(" [x] Received: %s", msg.content.toString());
 
-//     //Send an event back into the rapid 
-//     channel.publish(subscribe.rapid, "error", Buffer.from('error message'));
+//     //Send an "error" event back into the rapid.
+//     rapidriver.publish(channel, "error", "error message"));
 // });
