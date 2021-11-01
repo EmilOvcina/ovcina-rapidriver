@@ -1,4 +1,4 @@
-# ovcina-rapidriver
+# ovcina-rapidriver 1.3.0
 
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 

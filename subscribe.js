@@ -27,7 +27,12 @@ var sub = {
                     }
                     channel.bindQueue(q.queue, rapid, river);
 
-                    const publishWrapper = (river, message) => channel.publish(rapid, river, Buffer.from(message));
+                    const publishWrapper = (river, message) => {
+                        if(message instanceof Object) {
+                            message = JSON.stringify(message);
+                        }
+                        channel.publish(rapid, river, Buffer.from(message));
+                    }
 
                     channel.consume(q.queue, function(msg) {
                         if(msg.content) {
@@ -54,11 +59,16 @@ var sub = {
             channel.assertExchange(rapid, 'direct', {
                 durable: false
             })
-            
+
+            if(msg instanceof Object) {
+                msg = JSON.stringify(msg);
+            }
+
             channel.publish(rapid, river, Buffer.from(msg), {
                 durable: true,
                 persistent: true
             });
+            
             console.log(" [x] Sent '%s' to river: '%s'", msg, river);
             });
         });
