@@ -40,6 +40,28 @@ var sub = {
                 })
             });
         });       
+    },
+    publish:function (host, river, msg) {
+        amqp.connect(host, function(error0, connection) {
+        if (error0) {
+            throw error0;
+        }
+        connection.createChannel(function(error1, channel) {
+            if (error1) {
+                throw error1;
+            }
+
+            channel.assertExchange(rapid, 'direct', {
+                durable: false
+            })
+            
+            channel.publish(rapid, river, Buffer.from(msg), {
+                durable: true,
+                persistent: true
+            });
+            console.log(" [x] Sent '%s' to river: '%s'", msg, river);
+            });
+        });
     }
 };
 

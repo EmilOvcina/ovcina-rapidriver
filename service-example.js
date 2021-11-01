@@ -23,3 +23,8 @@ const host = 'amqp://localhost';
 //     //Send an "error" event back into the rapid.
 //      publish("error", "error message");
 // });
+
+/**
+ * Send an error event into the rapid right when the service is started.
+ */
+//rapidriver.publish(host, "error", "message");

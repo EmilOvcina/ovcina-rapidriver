@@ -60,7 +60,13 @@ To test the running service-example.js, run the producer and make a display even
 node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 ```
 
+It is also possible to publish a message programmatically, without having to subscribe to a river first:
+```javascript
+rapidriver.publish(host, river, msg);
+```
+
 ## Further Testing
+
 Try making a new service (in a different folder), and make it subscribe to the "error" river.
 ```javascript
 rapidriver.subscribe(host, "error", (msg, channel) => {
@@ -70,5 +76,4 @@ rapidriver.subscribe(host, "error", (msg, channel) => {
 
 In the first service add the "channel.publish" line which sends an error event back into the river.
 Now when both services are run, make the producer send a display event, the first service will send an error event which the other service will subscribe to and print out.
-
 
