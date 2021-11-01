@@ -1,6 +1,6 @@
 var amqp = require('amqplib/callback_api');
 
-// Used  for testing a service
+// Used for testing a service
 amqp.connect('amqp://localhost', function(error0, connection) {
     if (error0) {
         throw error0;
