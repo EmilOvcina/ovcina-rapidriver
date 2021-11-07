@@ -36,7 +36,7 @@ var sub = {
 
                     channel.consume(q.queue, function(msg) {
                         if(msg.content) {
-                            _work(msg, publishWrapper);
+                            _work(msg.content.toString(), publishWrapper);
                             channel.ack(msg);                
                         }
                     }, {
