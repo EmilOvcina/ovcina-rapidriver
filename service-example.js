@@ -13,8 +13,7 @@ const host = 'amqp://localhost';
 rapidriver.subscribe(host, [
     {river: "test", event: "display", work: (msg) => {
         console.log(" [*] Received: '%s'", msg); 
-    }} 
-    
+    }}
     /** to subscribe to multiple events: **/
     // , {river: "test", event: "other event", work: (msg) => {
     //     console.log(" [*] Received: '%s'", msg); 
