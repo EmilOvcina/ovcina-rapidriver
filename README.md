@@ -1,4 +1,4 @@
-# ovcina-rapidriver 1.3.1
+# ovcina-rapidriver 2.0.0
 
 *RabbitMQ is required to be running: https://www.rabbitmq.com/download.html*
 
@@ -23,21 +23,26 @@ Define a constant called 'host':
 const host = 'amqp://localhost';
 ```
 
-Subscribe to a river: 
+Subscribe to an event on a river: 
 ```javascript
-rapidriver.subscribe(host, "display", (msg) => {
-     console.log(" [x] Received: %s", msg);
-});
+rapidriver.subscribe(host, [
+    {river: "test", event: "display", work: (msg) => {
+        console.log(" [*] Received: '%s'", msg); 
+    }}
+]);
 ```
 
 Send an event back to the rapid, and remember to add the "publish" parameter in the callback function:
 ```javascript
-rapidriver.subscribe(host, "display", (msg, publish) => {
-     publish("error", "Error message");
- });
+rapidriver.subscribe(host, [
+    {river: "test", event: "display", work: (msg, publish) => {
+        publish("error", "Error Message"); 
+    }}
+]);
 ```
 
 ## Testing the service
+
 Run RabbitMQ message broker:
 ```bash
 rabbitmq-server
@@ -62,18 +67,20 @@ node node_modules/@ovcina/rapidriver/producer.js "display" "hello world"
 
 It is also possible to publish a message programmatically, without having to subscribe to a river first:
 ```javascript
-rapidriver.publish(host, river, msg);
+rapidriver.publish(host, event, msg);
 ```
 
 ## Further Testing
 
 Try making a new service (in a different folder), and make it subscribe to the "error" river.
 ```javascript
-rapidriver.subscribe(host, "error", (msg, channel) => {
-    console.log(" [x] Received: %s", msg);
-});
+rapidriver.subscribe(host, [
+    {river: "monitoring", event: "error", work: (msg) => {
+        console.log(" [*] Received: '%s'", msg); 
+    }}
+]);
 ```
 
-In the first service add the "channel.publish" line which sends an error event back into the river.
+In the first service add the "publish(event, msg)" line which sends an error event back into the river.
 Now when both services are run, make the producer send a display event, the first service will send an error event which the other service will subscribe to and print out.
 

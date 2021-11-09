@@ -2,74 +2,77 @@ var amqp = require('amqplib/callback_api');
 var rapid = 'rapid';
 
 var sub = {
-    subscribe:function (host, river, _work) {
-        amqp.connect(host, function(error, connection) {
-            if(error) {
-                throw error;
+    subscribe:function (host, subscriptions) { 
+        if(subscriptions.length === 0) return;        
+        amqp.connect(host, function(error0, connection) {
+            if (error0) {
+                throw error0;
             }
             connection.createChannel(function(error2, channel) {
                 if(error2) {
                     throw error2;
                 }
-    
-                channel.prefetch(1);
                 
+                channel.prefetch(1);
                 channel.assertExchange(rapid, 'direct', {
                     durable: false
                 }); 
                 
-                console.log(" [*] Waiting for messages in river: %s. To exit press CTRL+C", river);
-                channel.assertQueue(river, {
-                    exclusive: false
-                }, function(error2, q) {
-                    if(error2) {
-                        throw error2;
-                    }
-                    channel.bindQueue(q.queue, rapid, river);
+                subscriptions.forEach(sub => {
+                    console.log(" [*] Waiting for '%s' messages in river: %s. To exit press CTRL+C", sub.event, sub.river);
+        
+                    channel.assertQueue(sub.river, {
+                        exclusive: false
+                    }, (error3, q) => {
+                        if(error3) throw error3;
 
-                    const publishWrapper = (river, message) => {
-                        if(message instanceof Object) {
-                            message = JSON.stringify(message);
-                        }
-                        channel.publish(rapid, river, Buffer.from(message));
-                    }
+                        channel.bindQueue(q.queue, rapid, sub.event);
 
-                    channel.consume(q.queue, function(msg) {
-                        if(msg.content) {
-                            _work(msg.content.toString(), publishWrapper);
-                            channel.ack(msg);                
+                        const publishWrapper = (event, message) => {
+                            if(message instanceof Object) {
+                                message = JSON.stringify(message);
+                            }
+                            channel.publish(rapid, event, Buffer.from(message));
                         }
-                    }, {
-                        noAck: false
+
+                        channel.consume(q.queue, function(msg) {
+                            if(msg.content) {
+                                sub.work(msg.content.toString(), publishWrapper);
+                                channel.ack(msg);
+                            }
+                        }, {
+                            noAck: false
+                        });
                     });
-                })
+                });
             });
-        });       
+        });
     },
-    publish:function (host, river, msg) {
+    publish:function (host, event, msg) {
         amqp.connect(host, function(error0, connection) {
-        if (error0) {
-            throw error0;
-        }
-        connection.createChannel(function(error1, channel) {
-            if (error1) {
-                throw error1;
+            if (error0) {
+                throw error0;
             }
+            connection.createChannel(function(error1, channel) {
+                if (error1) {
+                    throw error1;
+                }
 
-            channel.assertExchange(rapid, 'direct', {
-                durable: false
-            })
+                channel.assertExchange(rapid, 'direct', {
+                    durable: false
+                })
 
-            if(msg instanceof Object) {
-                msg = JSON.stringify(msg);
-            }
+                if(msg instanceof Object) {
+                    msg = JSON.stringify(msg);
+                }
 
-            channel.publish(rapid, river, Buffer.from(msg), {
-                durable: true,
-                persistent: true
-            });
-            
-            console.log(" [x] Sent '%s' to river: '%s'", msg, river);
+                channel.publish(rapid, event, Buffer.from(msg), {
+                    durable: true,
+                    persistent: true
+                });
+                
+                console.log(" [x] Sent event '%s' with message: '%s'", event, msg);
+                channel.close();
             });
         });
     }

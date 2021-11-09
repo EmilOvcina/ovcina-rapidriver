@@ -7,24 +7,21 @@ const host = 'amqp://localhost';
  */
 
 /** 
- * subscribe to river(s), and do some work if it gets an event.
+ * subscribe to events on rivers, and do some work if it gets an event.
  */
- rapidriver.subscribe(host, "display", (msg) => {
-    console.log(" [x] Received: %s", msg);
+
+rapidriver.subscribe(host, [
+    {river: "test", event: "display", work: (msg) => {
+        console.log(" [*] Received: '%s'", msg); 
+    }} 
     
-});
-
-/** 
- *  More subscriptions can be added by calling the subscribe function again:
- */
-// rapidriver.subscribe(host, "info", (msg, publish) => {
-//     console.log(" [x] Received: %s", msg);
-
-//     //Send an "error" event back into the rapid.
-//      publish("error", "error message");
-// });
+    /** to subscribe to multiple events: **/
+    // , {river: "test", event: "other event", work: (msg) => {
+    //     console.log(" [*] Received: '%s'", msg); 
+    // }}
+]);
 
 /**
- * Send an error event into the rapid right when the service is started.
+ * Send a display event into the rapid right when the service is started.
  */
-//rapidriver.publish(host, "error", "message");
+//rapidriver.publish(host, "display", "message");
