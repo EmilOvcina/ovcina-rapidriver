@@ -1,6 +1,6 @@
 {
   "name": "@ovcina/rapidriver",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A Rapid-River architecture using RabbitMQ",
   "main": "subscribe.js",
   "scripts": {
