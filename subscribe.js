@@ -37,7 +37,8 @@ var sub = {
 
                         channel.consume(q.queue, function(msg) {
                             if(msg.content) {
-                                sub.work(JSON.parse(msg.content.toString()), publishWrapper);
+                                // sub.work(JSON.parse(msg.content.toString()), publishWrapper);
+                                sub.work(msg.content.toString(), publishWrapper);
                                 channel.ack(msg);
                             }
                         }, {
@@ -67,12 +68,11 @@ var sub = {
                 }
 
                 channel.publish(rapid, event, Buffer.from(msg), {
-                    durable: true,
-                    persistent: true
+                    durable: false,
+                    persistent: false
                 });
                 
                 console.log(" [x] Sent event '%s' with message: '%s'", event, msg);
-                channel.close();
             });
         });
     }
