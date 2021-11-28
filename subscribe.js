@@ -69,6 +69,7 @@ var sub = {
                 channel.publish(rapid, event, Buffer.from(msg));
                 
                 console.log(" [x] Sent event '%s' with message: '%s'", event, msg);
+                channel.close();
             });
         });
     }
