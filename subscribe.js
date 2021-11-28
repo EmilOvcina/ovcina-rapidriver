@@ -70,6 +70,7 @@ var sub = {
                 
                 console.log(" [x] Sent event '%s' with message: '%s'", event, msg);
                 setTimeout(function() {
+                    channel.close();
                     connection.close();
                 }, 1);
             });
