@@ -27,7 +27,7 @@ var sub = {
                         if(error3) throw error3;
 
                         channel.bindQueue(q.queue, rapid, sub.event);
-
+                        
                         const publishWrapper = (event, message) => {
                             if(message instanceof Object) {
                                 message = JSON.stringify(message);
@@ -36,6 +36,10 @@ var sub = {
                         }
 
                         channel.consume(q.queue, function(msg) {
+                            if(msg.fields.routingKey != sub.event) {
+                                channel.nack(msg, false, true);   
+                                return;
+                            }
                             if(msg.content) {
                                 sub.work(JSON.parse(msg.content.toString()), publishWrapper);
                                 channel.ack(msg);
