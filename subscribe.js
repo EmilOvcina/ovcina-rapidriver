@@ -13,7 +13,7 @@ var sub = {
                     throw error2;
                 }
                 
-                channel.prefetch(1);
+                // channel.prefetch(5);
                 channel.assertExchange(rapid, 'direct', {
                     durable: false
                 }); 
@@ -36,7 +36,7 @@ var sub = {
                         }
 
                         channel.consume(q.queue, function(msg) {
-                            if(msg.fields.routingKey != sub.event) {
+                            if(msg?.fields?.routingKey != sub?.event) {
                                 channel.nack(msg, false, true);   
                                 return;
                             }
