@@ -1,26 +1,26 @@
 {
-  "name": "@ovcina/rapidriver",
-  "version": "2.0.8",
-  "description": "A Rapid-River architecture using RabbitMQ",
-  "main": "subscribe.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Emil Ovcina",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/EmilOvcina/ovcina-rapidriver.git"
-  },
-  "bugs": {
-    "url": "https://github.com/EmilOvcina/ovcina-rapidriver/issues"
-  },
-  "homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme",
-  "dependencies": {
-    "amqplib": "latest"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  }
+	"name": "@ovcina/rapidriver",
+	"version": "2.0.8",
+	"description": "A Rapid-River microservice architecture using RabbitMQ",
+	"main": "subscribe.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Emil Ovcina",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/EmilOvcina/ovcina-rapidriver.git"
+	},
+	"bugs": {
+		"url": "https://github.com/EmilOvcina/ovcina-rapidriver/issues"
+	},
+	"homepage": "https://github.com/EmilOvcina/ovcina-rapidriver#readme",
+	"dependencies": {
+		"amqplib": "latest"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	}
 }
